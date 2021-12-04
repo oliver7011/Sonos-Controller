@@ -19,7 +19,6 @@ global zone
 
 
 #Speaker IP Address
-#room = SoCo("192.168.0.29")
 room = SoCo("192.168.1.41")
 
 def kitchen():
@@ -45,13 +44,6 @@ def play():
         state = "Playing"
         Label6.configure(text = state)
 
-#        my_picture = "play_1.png"
-#        image = PIL.Image.open(my_picture)
-#        pil_img = image.resize((50, 50))
-#        tk_img = ImageTk.PhotoImage(pil_img)
-#        
-#        Button1.configure(image=tk_img)
-#        Button1.image = tk_img
     else:
         room.play()
         state = "Paused"
@@ -240,17 +232,13 @@ def callback():
     artist = artist.partition(":")[0]
     artist = "Artist: " + artist
     
-    Label3.configure(text = artist)
-    
-    #volume = room.volume
-    #Label2.configure(fg="white",text = str(volume)+"%")
+    Label3.configure(text = artist)   
 
     zone = room.get_speaker_info().get('zone_name')
     root.title("Sonos Controller | In " + zone + " | Playing: " + title)
 
     pos = room.get_current_track_info().get('position')
     pos = "| " + str(pos) + " |"
-    #Label4.configure(text = pos)
 
     volupdate()
 
@@ -311,17 +299,6 @@ def hue_monitors():
 
 
 zone = room.get_speaker_info().get('zone_name')
-
-
-
-#fav = room.get_sonos_favorites().get('favorites')
-#favuri = str(fav[0])
-#favuri = favuri.rsplit('x-sonos', 1)[1]
-#favuri = favuri.split('meta')[0]
-#favuri = favuri[:-3]
-#favuri = "x-sonos" + favuri
-#room.play_uri(favuri)
-
 
 
 root = Tk()
@@ -421,8 +398,7 @@ Label5.grid(row=2, column=0, sticky=W)
 
 pos = room.get_current_track_info().get('position')
 pos = "| " + str(pos) + " |"
-#Label4 = Label(root, fg="white",bg="black", font=("Noto Serif", 10), text = pos)
-#Label4.grid(row=3, column=3, sticky=W)
+
 
 state = room.get_current_transport_info().get('current_transport_state')
 
@@ -433,10 +409,6 @@ else:
     
 Label6 = Label(root, fg="white",bg="black", font=("Noto Serif", 10), text = state)
 Label6.grid(row=3, column=1, sticky=W)
-
-#Label7 = Label(root, fg="white",bg="black", font=("Noto Serif", 10), text = duration)
-#Label7.grid(row=3, column=4, sticky=W)
-
 
 
 
