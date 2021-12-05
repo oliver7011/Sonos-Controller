@@ -15,5 +15,5 @@ python sonos_controller.py
 **Must Update IP Address To Match Speaker Setup**
 
 ## Dependencies:
--soco
--PIL
+- soco
+- PIL
